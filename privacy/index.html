@@ -54,7 +54,7 @@
                             in Discord servers or direct messages. Goose
                             collects only the data needed to provide bot
                             features, moderation tools, AI replies, debugging,
-                            and script hosting.
+                            and server configuration.
                         </p>
                     </section>
 
@@ -76,10 +76,9 @@
                                 replied-message context used for AI responses.
                             </li>
                             <li>
-                                Attachments submitted for AI or loadstring
-                                features, including supported text files,
-                                scripts, still images, sticker metadata, and
-                                image OCR or captions.
+                                Attachments submitted for AI features,
+                                including supported text files, still images,
+                                sticker metadata, and image OCR or captions.
                             </li>
                             <li>
                                 Server configuration such as prefixes, log
@@ -89,12 +88,6 @@
                                 whitelists.
                             </li>
                             <li>
-                                Hosted loadstring data such as Discord user ID,
-                                username slug, script name, script content,
-                                public path, timestamps, size, and version
-                                history.
-                            </li>
-                            <li>
                                 AI debug logs when debug mode is enabled for a
                                 server, including generated AI input payloads,
                                 message metadata, provider errors, and response
@@ -102,8 +95,8 @@
                             </li>
                             <li>
                                 Operational logs needed to diagnose errors,
-                                provider rate limits, script-hosting failures,
-                                and bot availability issues.
+                                provider rate limits, and bot availability
+                                issues.
                             </li>
                         </ul>
                     </section>
@@ -124,10 +117,6 @@
                                 Generate AI replies using relevant message
                                 context, attachment context, server metadata,
                                 and runtime settings.
-                            </li>
-                            <li>
-                                Host, list, update, remove, and serve
-                                user-submitted loadstring scripts.
                             </li>
                             <li>
                                 Apply rate limits, blacklists, whitelists,
@@ -163,17 +152,15 @@
                     <section id="public">
                         <h2>Public Content</h2>
                         <p class="notice">
-                            Loadstring hosting creates public raw script URLs,
-                            commonly under <code>https://sc.afkar.lol/</code>.
-                            Do not submit secrets, tokens, private keys,
-                            credentials, private code, or personal data as
-                            script content.
+                            Goose does not publish user-submitted scripts or
+                            files as public raw hosting links. Server moderation
+                            logs can still be visible to people who can view the
+                            configured log channel.
                         </p>
                         <p>
-                            Script links and old-version links can be accessed
-                            by anyone who has the URL. Server moderation logs
-                            are visible to people who can view the configured
-                            log channel.
+                            Do not submit secrets, tokens, private keys,
+                            credentials, or highly sensitive personal data to
+                            Goose commands or AI prompts.
                         </p>
                     </section>
 
@@ -182,10 +169,7 @@
                         <p>
                             Server configuration is kept until it is changed,
                             removed, or no longer needed. Tempban records are
-                            kept until the tempban expires or is cleared. Hosted
-                            scripts and their version history are kept until
-                            removed by the user, removed by the bot operator, or
-                            deleted as part of maintenance or abuse response.
+                            kept until the tempban expires or is cleared.
                         </p>
                         <p>
                             AI debug logs and operational logs may be kept while
@@ -203,18 +187,15 @@
                             server, disable commands, adjust server
                             configuration, and choose whether to use features
                             such as AI debug logging, autoresponses, log
-                            channels, ban channels, and loadstring hosting.
-                            Users can avoid submitting private content to the
-                            bot and can remove their hosted loadstrings using
-                            the bot's removal command where available.
+                            channels, and ban channels. Users can avoid
+                            submitting private content to the bot.
                         </p>
                     </section>
 
                     <section id="security">
                         <h2>Security</h2>
                         <p>
-                            Goose uses access controls, Discord permissions,
-                            authenticated internal script-hosting APIs, and
+                            Goose uses access controls, Discord permissions, and
                             operational safeguards to limit unauthorized access.
                             No system can be guaranteed completely secure, so
                             users should not send secrets or highly sensitive
