@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Privacy Policy | Goose Bot</title>
+        <meta
+            name="description"
+            content="Privacy Policy for the Goose Discord bot."
+        />
+        <link rel="stylesheet" href="../assets/styles.css" />
+    </head>
+    <body>
+        <header class="site-header">
+            <nav class="nav" aria-label="Primary navigation">
+                <a class="brand" href="../" aria-label="Goose policy home">
+                    <img src="../assets/goose.gif" alt="" />
+                    <span>
+                        <strong>Goose</strong>
+                        <span>Discord bot policies</span>
+                    </span>
+                </a>
+                <div class="nav-links">
+                    <a href="../terms/">Terms</a>
+                    <a href="../privacy/" aria-current="page">Privacy</a>
+                </div>
+            </nav>
+        </header>
+
+        <main class="policy-shell">
+            <div class="policy-layout">
+                <aside class="toc" aria-label="Privacy sections">
+                    <strong>Privacy</strong>
+                    <a href="#overview">Overview</a>
+                    <a href="#data">Data Collected</a>
+                    <a href="#use">How Data Is Used</a>
+                    <a href="#sharing">Third Parties</a>
+                    <a href="#public">Public Content</a>
+                    <a href="#retention">Retention</a>
+                    <a href="#choices">Choices</a>
+                    <a href="#security">Security</a>
+                    <a href="#contact">Contact</a>
+                </aside>
+
+                <article class="policy">
+                    <h1>Privacy Policy</h1>
+                    <p class="meta">Last updated: May 2, 2026</p>
+
+                    <section id="overview">
+                        <h2>Overview</h2>
+                        <p>
+                            This Privacy Policy explains how Goose collects,
+                            uses, stores, and shares data when the bot is used
+                            in Discord servers or direct messages. Goose
+                            collects only the data needed to provide bot
+                            features, moderation tools, AI replies, debugging,
+                            and script hosting.
+                        </p>
+                    </section>
+
+                    <section id="data">
+                        <h2>Data Collected</h2>
+                        <p>
+                            Depending on enabled features and user actions,
+                            Goose may process or store:
+                        </p>
+                        <ul>
+                            <li>
+                                Discord user IDs, usernames, display names,
+                                server IDs, channel IDs, message IDs, role IDs,
+                                and permission information.
+                            </li>
+                            <li>
+                                Messages, prompts, replies, command inputs,
+                                message links, and limited recent or
+                                replied-message context used for AI responses.
+                            </li>
+                            <li>
+                                Attachments submitted for AI or loadstring
+                                features, including supported text files,
+                                scripts, still images, sticker metadata, and
+                                image OCR or captions.
+                            </li>
+                            <li>
+                                Server configuration such as prefixes, log
+                                channels, ban channels, tempban entries, command
+                                settings, autoresponse triggers, ignored user or
+                                role IDs, knowledge lines, blacklists, and
+                                whitelists.
+                            </li>
+                            <li>
+                                Hosted loadstring data such as Discord user ID,
+                                username slug, script name, script content,
+                                public path, timestamps, size, and version
+                                history.
+                            </li>
+                            <li>
+                                AI debug logs when debug mode is enabled for a
+                                server, including generated AI input payloads,
+                                message metadata, provider errors, and response
+                                previews.
+                            </li>
+                            <li>
+                                Operational logs needed to diagnose errors,
+                                provider rate limits, script-hosting failures,
+                                and bot availability issues.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section id="use">
+                        <h2>How Data Is Used</h2>
+                        <p>Goose uses collected data to:</p>
+                        <ul>
+                            <li>
+                                Respond to commands, mentions, replies, direct
+                                messages, and configured autoresponse triggers.
+                            </li>
+                            <li>
+                                Run moderation actions and post moderation logs
+                                to configured channels.
+                            </li>
+                            <li>
+                                Generate AI replies using relevant message
+                                context, attachment context, server metadata,
+                                and runtime settings.
+                            </li>
+                            <li>
+                                Host, list, update, remove, and serve
+                                user-submitted loadstring scripts.
+                            </li>
+                            <li>
+                                Apply rate limits, blacklists, whitelists,
+                                command restrictions, and safety checks.
+                            </li>
+                            <li>
+                                Debug failures, prevent abuse, maintain service
+                                reliability, and improve bot behavior.
+                            </li>
+                        </ul>
+                        <p>Goose does not sell personal data.</p>
+                    </section>
+
+                    <section id="sharing">
+                        <h2>Third Parties</h2>
+                        <p>
+                            Goose runs on Discord and uses Discord APIs to
+                            receive events and perform bot actions. For AI
+                            features, relevant prompts, message context,
+                            attachment-derived text, image descriptions, and
+                            metadata may be sent to configured AI providers such
+                            as Groq, Cerebras, or Hugging Face.
+                        </p>
+                        <p>
+                            When users ask for live executor status or web
+                            information, Goose may request data from public web
+                            pages, WEAO, or URLs included in the user's message.
+                            Those third-party services process data under their
+                            own policies and operational practices.
+                        </p>
+                    </section>
+
+                    <section id="public">
+                        <h2>Public Content</h2>
+                        <p class="notice">
+                            Loadstring hosting creates public raw script URLs,
+                            commonly under <code>https://sc.afkar.lol/</code>.
+                            Do not submit secrets, tokens, private keys,
+                            credentials, private code, or personal data as
+                            script content.
+                        </p>
+                        <p>
+                            Script links and old-version links can be accessed
+                            by anyone who has the URL. Server moderation logs
+                            are visible to people who can view the configured
+                            log channel.
+                        </p>
+                    </section>
+
+                    <section id="retention">
+                        <h2>Retention</h2>
+                        <p>
+                            Server configuration is kept until it is changed,
+                            removed, or no longer needed. Tempban records are
+                            kept until the tempban expires or is cleared. Hosted
+                            scripts and their version history are kept until
+                            removed by the user, removed by the bot operator, or
+                            deleted as part of maintenance or abuse response.
+                        </p>
+                        <p>
+                            AI debug logs and operational logs may be kept while
+                            needed for troubleshooting, abuse prevention, and
+                            reliability. Data sent to Discord or third-party
+                            providers may be retained according to those
+                            services' policies.
+                        </p>
+                    </section>
+
+                    <section id="choices">
+                        <h2>Choices</h2>
+                        <p>
+                            Server administrators can remove Goose from a
+                            server, disable commands, adjust server
+                            configuration, and choose whether to use features
+                            such as AI debug logging, autoresponses, log
+                            channels, ban channels, and loadstring hosting.
+                            Users can avoid submitting private content to the
+                            bot and can remove their hosted loadstrings using
+                            the bot's removal command where available.
+                        </p>
+                    </section>
+
+                    <section id="security">
+                        <h2>Security</h2>
+                        <p>
+                            Goose uses access controls, Discord permissions,
+                            authenticated internal script-hosting APIs, and
+                            operational safeguards to limit unauthorized access.
+                            No system can be guaranteed completely secure, so
+                            users should not send secrets or highly sensitive
+                            information to the bot.
+                        </p>
+                    </section>
+
+                    <section id="contact">
+                        <h2>Contact</h2>
+                        <p>
+                            For privacy questions, data access, correction,
+                            deletion, abuse reports, or safety requests, contact
+                            the Goose bot owner, afkar, through Discord.
+                        </p>
+                    </section>
+                </article>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <a href="../">Home</a> · <a href="../terms/">Terms of Service</a>
+        </footer>
+    </body>
+</html>
