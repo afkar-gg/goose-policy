@@ -6,9 +6,21 @@
         <title>Privacy Policy | Goose Bot</title>
         <meta
             name="description"
-            content="Privacy Policy for the Goose Discord bot."
+            content="Privacy Policy for the Goose Discord bot, disclosing Privileged Gateway Intent handling, in-memory processing, zero AI training, and data retention."
         />
+        <script>
+            (function () {
+                try {
+                    var stored = localStorage.getItem('goose-theme');
+                    var theme = (stored === 'dark' || stored === 'light') ? stored : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                    document.documentElement.setAttribute('data-theme', theme);
+                } catch (e) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            })();
+        </script>
         <link rel="stylesheet" href="../assets/styles.css" />
+        <script src="../assets/theme.js" defer></script>
     </head>
     <body>
         <header class="site-header">
@@ -23,6 +35,22 @@
                 <div class="nav-links">
                     <a href="../terms/">Terms</a>
                     <a href="../privacy/" aria-current="page">Privacy</a>
+                    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false" title="Toggle theme">
+                        <svg class="icon-sun theme-icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="icon-moon theme-icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
                 </div>
             </nav>
         </header>
@@ -32,19 +60,20 @@
                 <aside class="toc" aria-label="Privacy sections">
                     <strong>Privacy</strong>
                     <a href="#overview">Overview</a>
+                    <a href="#intents">Privileged Gateway Intents</a>
                     <a href="#data">Data Collected</a>
                     <a href="#use">How Data Is Used</a>
                     <a href="#sharing">Third Parties</a>
                     <a href="#public">Public Content</a>
                     <a href="#retention">Retention</a>
-                    <a href="#choices">Choices</a>
+                    <a href="#choices">Choices &amp; Opt-Outs</a>
                     <a href="#security">Security</a>
                     <a href="#contact">Contact</a>
                 </aside>
 
                 <article class="policy">
                     <h1>Privacy Policy</h1>
-                    <p class="meta">Last updated: May 2, 2026</p>
+                    <p class="meta">Last updated: November 9, 2026</p>
 
                     <section id="overview">
                         <h2>Overview</h2>
@@ -52,10 +81,64 @@
                             This Privacy Policy explains how Goose collects,
                             uses, stores, and shares data when the bot is used
                             in Discord servers or direct messages. Goose
-                            collects only the data needed to provide bot
-                            features, moderation tools, AI replies, debugging,
-                            and server configuration.
+                            collects only the minimum data needed to provide bot
+                            features, moderation tools, AI chat replies, debugging,
+                            and server configuration. Goose strictly respects user privacy
+                            and complies with Discord's Developer Terms of Service and Developer Policy,
+                            including mandatory disclosures for Discord Privileged Gateway Intents:
+                            Message Content Intent, Server Members Intent, and Presence Intent.
                         </p>
+                    </section>
+
+                    <section id="intents">
+                        <h2>Privileged Gateway Intents</h2>
+                        <p>
+                            Goose operates under Discord's Privileged Gateway Intents framework.
+                            In accordance with Discord Developer Policies, Goose provides the following disclosures
+                            regarding Message Content Intent, Server Members Intent, and Presence Intent:
+                        </p>
+
+                        <h3>1. Message Content Intent</h3>
+                        <p>
+                            Goose requires the <strong>Message Content Intent</strong> for its primary conversational features:
+                        </p>
+                        <ul>
+                            <li><strong>AI Chat Processing:</strong> Reading user messages, mentions, and reply chains to generate conversational responses via third-party inference providers (Groq, Cerebras, and Hugging Face).</li>
+                            <li><strong>Command Detection:</strong> Parsing configured message prefixes (default: <code>s.</code>) and slash commands.</li>
+                            <li><strong>Autorespond Triggers:</strong> Evaluating incoming messages against server-configured trigger phrases.</li>
+                            <li><strong>Attachment Text Analysis:</strong> Inspecting attached code or text files (.txt, .js, .lua) for code review and contextual assistance.</li>
+                        </ul>
+                        <div class="notice">
+                            <p>
+                                <strong>Strict In-Memory Processing &amp; Off-Platform Guarantee:</strong> All message content is processed strictly <strong>in-memory</strong> in volatile runtime buffers during active command or AI inference handling. Message content is <strong>never stored off-platform (outside of Discord)</strong>, is never written to persistent databases or disks, and is discarded immediately once the response is delivered.
+                            </p>
+                        </div>
+                        <div class="notice">
+                            <p>
+                                <strong>Zero AI Model Training Guarantee:</strong> User messages, prompts, attachments, and server content are sent to third-party inference providers exclusively for transient inference. We explicitly guarantee that messages are <strong>never used to train machine learning or AI models</strong>.
+                            </p>
+                        </div>
+
+                        <h3>2. Server Members Intent</h3>
+                        <p>
+                            Goose uses the <strong>Server Members Intent</strong> exclusively for the <strong>Member Facts</strong> feature.
+                            When server members ask questions about a user's roles or permissions (e.g., <em>"what roles does @user have?"</em> or <em>"does @user have admin?"</em>),
+                            Goose queries guild member data to resolve member information and provide accurate context.
+                        </p>
+                        <ul>
+                            <li><strong>On-Demand Role &amp; Permission Lookups:</strong> Resolves member roles, permission levels (administrator, manage guild, manage messages, ban, kick, timeout), display names, and nicknames on-demand.</li>
+                            <li><strong>Ephemeral In-Memory Caching:</strong> Member facts are fetched on-demand and cached in volatile memory for at most <strong>120 seconds</strong> to avoid Discord API rate limits during active conversation. They are ephemeral and are <strong>never stored off-platform</strong>.</li>
+                        </ul>
+
+                        <h3>3. Presence Intent</h3>
+                        <p>
+                            Goose uses the <strong>Presence Intent</strong> for a community management <strong>dashboard</strong> feature that displays online member status to server administrators and members.
+                        </p>
+                        <ul>
+                            <li><strong>Real-Time Member Status Dashboard:</strong> Aggregates live online, idle, dnd, and offline availability along with current activity indicators (e.g., game or application status) to assist community organizers in scheduling events and monitoring community engagement.</li>
+                            <li><strong>Non-Persistent &amp; Real-Time:</strong> Presence data is processed strictly in real-time in volatile memory to render the live dashboard. Goose does <strong>not</strong> store user activity or presence status off-platform outside of Discord.</li>
+                            <li><strong>User Presence Opt-Out via Bot Command:</strong> Users have complete control over their presence visibility. You can opt out of having your presence data tracked or displayed on the dashboard at any time by running the bot command <code>s.presence optout</code> or slash command <code>/presence optout</code>. Users can re-enable tracking at any time using <code>s.presence optin</code> or <code>/presence optin</code>.</li>
+                        </ul>
                     </section>
 
                     <section id="data">
@@ -66,37 +149,40 @@
                         </p>
                         <ul>
                             <li>
-                                Discord user IDs, usernames, display names,
+                                <strong>Account &amp; Guild Identifiers:</strong> Discord user IDs, usernames, display names,
                                 server IDs, channel IDs, message IDs, role IDs,
-                                and permission information.
+                                and permission flags.
                             </li>
                             <li>
-                                Messages, prompts, replies, command inputs,
-                                message links, and limited recent or
-                                replied-message context used for AI responses.
+                                <strong>Message Content &amp; Context:</strong> Messages, prompts, replies, command inputs,
+                                message links, reply chain context, and recent channel messages needed to generate AI responses.
+                                Message content is processed strictly in-memory and is never stored off-platform (outside of Discord).
                             </li>
                             <li>
-                                Attachments submitted for AI features,
-                                including supported text files, still images,
+                                <strong>Guild Member &amp; Role Facts:</strong> Member role assignments, key server permissions
+                                (administrator, manage guild, manage messages, ban, kick, timeout), display names, and nicknames
+                                fetched on-demand for the Member Facts feature and not persisted off-platform.
+                            </li>
+                            <li>
+                                <strong>Presence &amp; Activity Status:</strong> Real-time member availability status
+                                (online, idle, dnd, offline) and active game/app indicators processed in-memory for the community
+                                dashboard, without off-platform persistence.
+                            </li>
+                            <li>
+                                <strong>Submitted Attachments:</strong> Attachments submitted for AI features,
+                                including supported text files (.txt, .js, .lua), still images,
                                 sticker metadata, and image OCR or captions.
                             </li>
                             <li>
-                                Server configuration such as prefixes, log
-                                channels, ban channels, tempban entries, command
-                                settings, autoresponse triggers, ignored user or
-                                role IDs, knowledge lines, blacklists, and
-                                whitelists.
+                                <strong>Server Configuration:</strong> Persistent server settings such as command prefixes (default: <code>s.</code>),
+                                log channels, ban channels, tempban entries, command settings,
+                                autoresponse triggers, ignored user or role IDs, knowledge lines,
+                                blacklists, and whitelists.
                             </li>
                             <li>
-                                AI debug logs when debug mode is enabled for a
-                                server, including generated AI input payloads,
-                                message metadata, provider errors, and response
-                                previews.
-                            </li>
-                            <li>
-                                Operational logs needed to diagnose errors,
-                                provider rate limits, and bot availability
-                                issues.
+                                <strong>AI Debug &amp; Operational Logs:</strong> Diagnostic operational logs, rate limit tracking,
+                                and transient AI debug logs (when explicitly enabled by a server administrator)
+                                to troubleshoot failures, provider rate limits, and bot availability.
                             </li>
                         </ul>
                     </section>
@@ -114,9 +200,12 @@
                                 to configured channels.
                             </li>
                             <li>
-                                Generate AI replies using relevant message
-                                context, attachment context, server metadata,
-                                and runtime settings.
+                                Provide real-time AI conversational replies and
+                                Member Facts lookups using in-memory context.
+                            </li>
+                            <li>
+                                Render the real-time online member status dashboard
+                                for server administrators and community members.
                             </li>
                             <li>
                                 Apply rate limits, blacklists, whitelists,
@@ -127,7 +216,9 @@
                                 reliability, and improve bot behavior.
                             </li>
                         </ul>
-                        <p>Goose does not sell personal data.</p>
+                        <p>
+                            Goose does not sell personal data, and user messages are never used to train machine learning or AI models.
+                        </p>
                     </section>
 
                     <section id="sharing">
@@ -137,8 +228,13 @@
                             receive events and perform bot actions. For AI
                             features, relevant prompts, message context,
                             attachment-derived text, image descriptions, and
-                            metadata may be sent to configured AI providers such
+                            metadata may be sent over encrypted HTTPS to configured AI providers such
                             as Groq, Cerebras, or Hugging Face.
+                        </p>
+                        <p>
+                            Data sent to AI providers is strictly for immediate inference generation.
+                            None of your message content or prompts are used by Goose or its AI providers
+                            to train artificial intelligence or machine learning models.
                         </p>
                         <p>
                             When users ask for live executor status or web
@@ -167,29 +263,75 @@
                     <section id="retention">
                         <h2>Retention</h2>
                         <p>
-                            Server configuration is kept until it is changed,
-                            removed, or no longer needed. Tempban records are
-                            kept until the tempban expires or is cleared.
+                            Goose enforces granular data retention rules that distinctly separate temporary ephemeral data,
+                            persistent server configurations, and moderation records:
                         </p>
+
+                        <div style="overflow-x: auto; margin: 24px 0;">
+                            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
+                                <thead>
+                                    <tr style="border-bottom: 2px solid var(--line);">
+                                        <th style="padding: 12px 14px; color: var(--ink); font-weight: 700;">Data Category</th>
+                                        <th style="padding: 12px 14px; color: var(--ink); font-weight: 700;">Retention Period</th>
+                                        <th style="padding: 12px 14px; color: var(--ink); font-weight: 700;">Storage Location</th>
+                                        <th style="padding: 12px 14px; color: var(--ink); font-weight: 700;">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid var(--line);">
+                                        <td style="padding: 12px 14px; font-weight: 600; color: var(--ink);">Ephemeral &amp; In-Memory Data</td>
+                                        <td style="padding: 12px 14px; color: var(--muted);">Transient (seconds to 120s max)</td>
+                                        <td style="padding: 12px 14px; color: var(--muted);">Volatile RAM only; never stored off-platform</td>
+                                        <td style="padding: 12px 14px; color: var(--muted);">Message content, reply chains, AI prompts, Member Facts cache (up to 120 seconds), and real-time presence indicators. Discarded immediately after processing.</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--line);">
+                                        <td style="padding: 12px 14px; font-weight: 600; color: var(--ink);">Server Configuration</td>
+                                        <td style="padding: 12px 14px; color: var(--muted);">Until modified, reset, or bot removed</td>
+                                        <td style="padding: 12px 14px; color: var(--muted);">Local bot configuration storage</td>
+                                        <td style="padding: 12px 14px; color: var(--muted);">Custom command prefix (e.g. <code>s.</code>), log channel IDs, ban channel IDs, tempban records, autoresponse triggers, ignored roles/channels, and per-server AI quotas.</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 12px 14px; font-weight: 600; color: var(--ink);">Moderation &amp; Operational Logs</td>
+                                        <td style="padding: 12px 14px; color: var(--muted);">Audit duration / operational need</td>
+                                        <td style="padding: 12px 14px; color: var(--muted);">Configured log channels &amp; local log store</td>
+                                        <td style="padding: 12px 14px; color: var(--muted);">Moderation actions (bans, kicks, timeouts, reasons, moderator IDs) and temporary operational/error logs needed for rate limit tracking and security abuse prevention.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>1. Ephemeral In-Memory Data</h3>
                         <p>
-                            AI debug logs and operational logs may be kept while
-                            needed for troubleshooting, abuse prevention, and
-                            reliability. Data sent to Discord or third-party
-                            providers may be retained according to those
-                            services' policies.
+                            Message content, prompts, attachments, and reply chain context are processed strictly <strong>in-memory</strong> and are never persisted off-platform outside of Discord. Member Facts queries are cached in volatile memory for at most <strong>120 seconds</strong> and are never written to disk. Presence tracking data is evaluated in real-time and discarded immediately.
+                        </p>
+
+                        <h3>2. Persistent Server Configuration</h3>
+                        <p>
+                            Server configuration data—including custom server prefixes, designated log channels, ban channels, tempban schedules, autoresponse trigger definitions, knowledge lines, channel permissions, and blacklist/whitelist settings—is retained in configuration storage until explicitly modified, cleared by server administrators, or when Goose is removed from the server.
+                        </p>
+
+                        <h3>3. Moderation Records &amp; Operational Logs</h3>
+                        <p>
+                            Moderation log entries (including user IDs, moderator IDs, actions, and reasons) are sent directly to the server's configured log channel. Active tempban records remain until the ban expires or is cleared. Operational logs required for diagnosing system errors, provider rate limits, and abuse prevention are periodically rotated and removed.
                         </p>
                     </section>
 
                     <section id="choices">
-                        <h2>Choices</h2>
+                        <h2>Choices &amp; Opt-Outs</h2>
                         <p>
-                            Server administrators can remove Goose from a
-                            server, disable commands, adjust server
-                            configuration, and choose whether to use features
-                            such as AI debug logging, autoresponses, log
-                            channels, and ban channels. Users can avoid
-                            submitting private content to the bot.
+                            Users and server administrators have several controls over their data and bot interactions:
                         </p>
+                        <ul>
+                            <li>
+                                <strong>Presence Tracking Opt-Out:</strong> Any user can opt out of presence and activity status tracking across servers where Goose operates by executing the bot command <code>s.presence optout</code> or slash command <code>/presence optout</code>. Once opted out, the user's online and activity status is immediately excluded from the community dashboard. To resume presence tracking, users can run <code>s.presence optin</code> or <code>/presence optin</code>.
+                            </li>
+                            <li>
+                                <strong>Server Administration:</strong> Server administrators can remove Goose from a server at any time, reset configurations, change command prefixes, configure ignored channels or roles, and enable or disable moderation logging and autoresponses.
+                            </li>
+                            <li>
+                                <strong>Message Content Privacy:</strong> Users can choose not to interact with Goose commands or mention the bot, and can avoid posting sensitive personal information or credentials in Discord channels where Goose is present.
+                            </li>
+                        </ul>
                     </section>
 
                     <section id="security">
@@ -216,7 +358,17 @@
         </main>
 
         <footer class="site-footer">
-            <a href="../">Home</a> · <a href="../terms/">Terms of Service</a>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="../">Home</a> ·
+                    <a href="../terms/">Terms of Service</a> ·
+                    <a href="../privacy/" aria-current="page">Privacy Policy</a>
+                </div>
+                <div class="footer-meta">
+                    <span>Last updated: November 9, 2026.</span>
+                    <span>Contact: afkar through Discord for privacy, safety, or removal requests.</span>
+                </div>
+            </div>
         </footer>
     </body>
 </html>

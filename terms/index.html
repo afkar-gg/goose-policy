@@ -6,9 +6,21 @@
         <title>Terms of Service | Goose Bot</title>
         <meta
             name="description"
-            content="Terms of Service for the Goose Discord bot."
+            content="Terms of Service for the Goose Discord bot, covering AI chat services, moderation tools, and intent compliance commitments."
         />
+        <script>
+            (function () {
+                try {
+                    var stored = localStorage.getItem('goose-theme');
+                    var theme = (stored === 'dark' || stored === 'light') ? stored : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                    document.documentElement.setAttribute('data-theme', theme);
+                } catch (e) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            })();
+        </script>
         <link rel="stylesheet" href="../assets/styles.css" />
+        <script src="../assets/theme.js" defer></script>
     </head>
     <body>
         <header class="site-header">
@@ -23,6 +35,22 @@
                 <div class="nav-links">
                     <a href="../terms/" aria-current="page">Terms</a>
                     <a href="../privacy/">Privacy</a>
+                    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false" title="Toggle theme">
+                        <svg class="icon-sun theme-icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="icon-moon theme-icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
                 </div>
             </nav>
         </header>
@@ -32,8 +60,9 @@
                 <aside class="toc" aria-label="Terms sections">
                     <strong>Terms</strong>
                     <a href="#agreement">Agreement</a>
-                    <a href="#service">Service</a>
+                    <a href="#service">Service Description</a>
                     <a href="#acceptable-use">Acceptable Use</a>
+                    <a href="#intents">Privileged Intents Commitments</a>
                     <a href="#moderation">Moderation</a>
                     <a href="#content">User Content</a>
                     <a href="#availability">Availability</a>
@@ -43,121 +72,128 @@
 
                 <article class="policy">
                     <h1>Terms of Service</h1>
-                    <p class="meta">Last updated: May 2, 2026</p>
+                    <p class="meta">Last updated: November 9, 2026</p>
 
                     <section id="agreement">
                         <h2>Agreement</h2>
                         <p>
-                            By inviting, configuring, or using Goose in Discord,
+                            By inviting, configuring, or interacting with Goose in Discord,
                             you agree to these Terms of Service. If you use
-                            Goose in a Discord server, you must also follow
-                            Discord's terms, Discord's community rules, and the
-                            rules set by that server.
+                            Goose in a Discord server, you must also comply with
+                            Discord's Terms of Service, Discord's Community Guidelines, and the
+                            rules established by that server.
                         </p>
                     </section>
 
                     <section id="service">
-                        <h2>Service</h2>
+                        <h2>Service Description</h2>
                         <p>
-                            Goose is a Discord bot that provides moderation
-                            commands, configurable server utilities, AI chat
-                            responses, autoresponses, and direct-message
-                            commands. Some features
-                            are available only to server moderators,
-                            administrators, bot operators, or
-                            creator-whitelisted users.
+                            Goose is a public Discord AI chatbot and community management application that provides:
+                        </p>
+                        <ul>
+                            <li><strong>AI Chatbot &amp; Conversational Inference:</strong> Multi-provider conversational responses (Groq, Cerebras, Hugging Face) with automated fallback, reply-chain context tracking, and attachment text/image inspection.</li>
+                            <li><strong>Moderation Tools &amp; Utilities:</strong> Comprehensive moderation commands (ban, kick, timeout, blacklist, tempban enforcement) and configurable mod logging.</li>
+                            <li><strong>Member Facts Lookup:</strong> On-demand querying of guild member roles, permission levels, display names, and nicknames without off-platform storage.</li>
+                            <li><strong>Presence &amp; Online Member Dashboard:</strong> Real-time visualization of server member availability (online, idle, dnd, offline) and active games/applications for community event scheduling and engagement.</li>
+                            <li><strong>Server Utilities:</strong> Customizable command prefixes (default: <code>s.</code>), autoresponse triggers, server knowledge bases, and loadstring hosting utilities.</li>
+                        </ul>
+                        <p>
+                            Certain administrative and moderation features are restricted to server administrators, moderators, bot operators, or creator-whitelisted users.
                         </p>
                     </section>
 
                     <section id="acceptable-use">
                         <h2>Acceptable Use</h2>
-                        <p>You may not use Goose to:</p>
+                        <p>You agree to adhere to acceptable use standards when interacting with Goose. You may not use Goose to:</p>
                         <ul>
                             <li>
-                                Break Discord's rules, violate laws, or evade
-                                platform restrictions.
+                                Break Discord's Terms of Service, violate applicable laws, or evade
+                                platform restrictions and server bans.
                             </li>
                             <li>
-                                Harass, threaten, impersonate, spam, or abuse
-                                other people or communities.
+                                Harass, threaten, impersonate, spam, raid, or abuse
+                                other individuals or communities.
                             </li>
                             <li>
-                                Use Goose to distribute malware, credential
-                                stealers, token stealers, or other harmful
-                                material.
+                                Submit or distribute malware, token stealers, credential
+                                loggers, exploit scripts, or harmful computer code.
                             </li>
                             <li>
-                                Interfere with Goose, Discord, or any
-                                third-party provider used by the bot.
+                                Intentionally disrupt, overload, or reverse-engineer Goose, Discord APIs, or
+                                third-party AI inference providers used by the bot.
                             </li>
                         </ul>
                         <p>
-                            Access may be limited, blocked, or removed when
-                            abuse is detected or when continued access creates
-                            risk for users, servers, infrastructure, or the bot
-                            operator.
+                            Access to Goose may be rate-limited, restricted, or permanently revoked
+                            via blacklisting when abuse, terms violations, or security risks are detected.
                         </p>
+                    </section>
+
+                    <section id="intents">
+                        <h2>Privileged Intents Commitments</h2>
+                        <p>
+                            In alignment with Discord's Privileged Gateway Intent requirements, Goose operates under the following explicit operational commitments:
+                        </p>
+                        <ul>
+                            <li><strong>In-Memory Message Processing:</strong> Message content accessed via Message Content Intent is processed strictly in-memory during active command parsing or AI chat inference, and is never stored off-platform (outside of Discord).</li>
+                            <li><strong>Zero AI Model Training:</strong> Goose does not use user messages, prompts, or attachments to train machine learning or AI models. Prompts are used exclusively for real-time inference generation.</li>
+                            <li><strong>On-Demand Member Facts:</strong> Guild member data accessed via Server Members Intent is fetched on-demand, cached ephemerally in volatile memory for at most 120 seconds, and never persisted off-platform.</li>
+                            <li><strong>Presence Tracking &amp; Opt-Out:</strong> Presence data accessed via Presence Intent is evaluated in real-time solely for the online member status dashboard and is never persisted off-platform. Users can opt out of presence tracking at any time using <code>s.presence optout</code> or <code>/presence optout</code>.</li>
+                        </ul>
                     </section>
 
                     <section id="moderation">
                         <h2>Moderation</h2>
                         <p>
                             Server administrators and moderators are responsible
-                            for how they configure and use moderation features.
-                            Goose can perform actions such as timeouts, kicks,
+                            for configuring and executing moderation features within their servers.
+                            Goose provides utilities such as timeouts, kicks,
                             bans, tempbans, blacklist management, command
-                            disabling, moderation logging, and automatic
-                            ban-channel enforcement when those features are
-                            configured.
+                            restrictions, and moderation logging when authorized by server permissions.
                         </p>
                         <p>
-                            Goose may log moderation actions to configured
-                            server log channels. Those logs can include Discord
-                            user IDs, usernames, channel IDs, message links,
-                            command details, and moderator-provided reasons.
+                            Moderation actions may be logged directly to the server's configured
+                            moderation log channel, including Discord user IDs, usernames, moderator IDs,
+                            timestamps, and provided reasons.
                         </p>
                     </section>
 
                     <section id="content">
                         <h2>User Content</h2>
                         <p>
-                            You are responsible for messages, attachments,
-                            prompts, command inputs, and other content you
-                            submit to Goose. You grant the bot operator
-                            permission to process that content as needed to
-                            operate the bot, provide replies, enforce these
-                            terms, debug issues, and comply with valid safety or
-                            legal requests.
+                            You retain responsibility for messages, code attachments,
+                            prompts, and other content you submit to Goose. You grant the bot
+                            operator permission to process that content strictly as needed to
+                            operate the bot, deliver AI responses, enforce these terms, and maintain
+                            operational safety in accordance with our <a href="../privacy/">Privacy Policy</a>.
                         </p>
                     </section>
 
                     <section id="availability">
                         <h2>Availability</h2>
                         <p>
-                            Goose is provided as-is. The bot may be changed,
-                            rate-limited, interrupted, disabled, or discontinued
-                            at any time. AI responses and web or executor-status
-                            lookups may be incomplete, delayed, unavailable, or
-                            incorrect, and should not be treated as professional
-                            advice.
+                            Goose is provided on an "as-is" and "as-available" basis. The bot may be updated,
+                            rate-limited, temporarily interrupted, or discontinued at any time.
+                            AI responses, web search results, and external tracker data may be delayed,
+                            imprecise, or unavailable, and must not be relied upon as professional or legal advice.
                         </p>
                     </section>
 
                     <section id="changes">
                         <h2>Changes</h2>
                         <p>
-                            These terms may be updated when Goose changes or
-                            when operational, legal, or safety needs require it.
-                            Continued use of Goose after an update means you
-                            accept the updated terms.
+                            These terms may be revised as Goose evolves or as
+                            operational, legal, or platform requirements dictate.
+                            Continued use of Goose following published updates constitutes
+                            acceptance of the revised terms.
                         </p>
                     </section>
 
                     <section id="contact">
                         <h2>Contact</h2>
                         <p>
-                            For terms, safety, abuse, or removal requests,
-                            contact the Goose bot owner, afkar, through Discord.
+                            For inquiries regarding these Terms of Service, abuse reports,
+                            or safety concerns, contact the Goose bot owner, afkar, through Discord.
                         </p>
                     </section>
                 </article>
@@ -165,7 +201,17 @@
         </main>
 
         <footer class="site-footer">
-            <a href="../">Home</a> · <a href="../privacy/">Privacy Policy</a>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="../">Home</a> ·
+                    <a href="../terms/" aria-current="page">Terms of Service</a> ·
+                    <a href="../privacy/">Privacy Policy</a>
+                </div>
+                <div class="footer-meta">
+                    <span>Last updated: November 9, 2026.</span>
+                    <span>Contact: afkar through Discord for privacy, safety, or removal requests.</span>
+                </div>
+            </div>
         </footer>
     </body>
 </html>
